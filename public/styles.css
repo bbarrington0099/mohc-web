@@ -1,0 +1,206 @@
+:root {
+    --primary-background: #3e5479;
+    --tertiary-background: #696260;
+    --secondary-background: #444343;
+    --secondary-foreground: #ddb689;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: fixed;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#page-top {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    display: flex;
+    height: 12vh;
+    width: 100vw;
+    background-color: var(--primary-background);
+}
+
+#page-top  #corner-cross img {
+    width: 10vw;
+    height: 12vh;
+}
+
+#page-top #headings-container {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#page-top #random-verse {
+    background-color: var(--secondary-background);
+    color: var(--secondary-foreground);
+    width: 90vw;
+    padding: 1.5vh;
+}
+
+#page-top #mobile-menu {
+    display: none;
+    background-color: #ddb689;
+}
+
+#page-side {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 88vh;
+    width: 12rem;
+    background-color: var(--tertiary-background);
+}
+
+#page-side nav {
+    padding: 1rem;
+}
+
+#page-side nav .nav-option {
+    display: flex;
+    min-width: 100%;
+    padding: 1.5rem;
+    background-color: var(--primary-background);
+    border: 1px solid var(--secondary-background);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#page-side nav .nav-option.selected {
+    background-color: var(--secondary-foreground);
+}
+
+
+#page-side nav .nav-option:hover {
+    transform: scale(1.1);
+    border-color: var(--secondary-foreground)
+}
+
+#page-side nav .nav-option.selected:hover {
+    transform: none;
+}
+
+#page-side #announcements-container {
+    padding: .5rem 1.5rem 1rem 1.5rem;
+    margin: 1rem;
+    border: solid 1px var(--secondary-foreground);
+    border-radius: 1rem;
+    max-height: 50%;
+    overflow: scroll;
+}
+
+#page-side #announcements-container #announcements-regularly-scheduled {
+    margin-bottom: 1.5rem;
+}
+
+#page-side #announcements-container li {
+    margin-bottom: .5rem;
+}
+
+.announcements-header {
+    border-bottom: solid .5px var(--secondary-foreground);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+#page-side #location  {
+    margin-top: auto;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 600px) {
+    * {
+        overflow: scroll;
+    }
+
+    #page-top {
+        height: 12vw;
+    }
+
+    #page-top  #corner-cross img {
+        height: 12vw;
+        width: 10vw;
+    }
+
+    #page-top #headings-container {
+        width: 80vw;
+    }
+
+    #page-top #headings-container h1, h2 {
+        font-size: 1rem;
+    }
+
+    #page-top #random-verse {
+        display: none;
+    }
+
+    #page-top #mobile-menu {
+        display: flex;
+        width: 12vw;
+    }
+
+    #page-top #mobile-menu #mobile-menu-button {
+        width: 100%;
+        height: 100%;
+        font-size: 28px;
+        font-weight: bold;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #page-top #mobile-menu #mobile-menu-button.opened {
+        background-color: var(--secondary-foreground);
+        color: var(--primary-background);
+        border: 1px solid var(--secondary-background);
+    }
+
+    #page-top #mobile-menu #mobile-menu-button.closed {
+        background-color: var(--secondary-background);
+        color: var(--secondary-foreground);
+        border: 1px solid var(--tertiary-background);
+    }
+
+    #page-side.opened {
+        width: 100%;
+        display: flex;
+    }
+
+    #page-side.closed {
+        display: none;
+    }
+
+    #page-side nav .nav-option {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+
+    #page-side #announcements-container {
+        max-height: 300px;
+    }
+
+    main {
+        padding: 2rem;
+        margin-top: 20vh;
+    }
+}
