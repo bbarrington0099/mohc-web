@@ -31,8 +31,6 @@ const verifyGitHubSignature = (req, res, next) => {
 // Webhook route
 router.post("/", verifyGitHubSignature, (req, res) => {
     const branch = req.body.ref;
-    const logFilePath = path.resolve(os.homedir(), "mohc-web", "logs", "git.log");
-    const currentDate = new Date().toISOString();
 
     // Check if the pushed branch is "main"
     if (branch === "refs/heads/main") {
@@ -52,14 +50,12 @@ router.post("/", verifyGitHubSignature, (req, res) => {
             exec("pm2 restart mohc-web", (error, stdout, stderr) => {
                 if (error) {
                     console.error(`Error restarting app: ${error.message}`);
-                    fs.appendFileSync(logFilePath, `${currentDate} - Error restarting app: ${error.message}\n`);
                     return;
                 }
                 if (stderr) {
                     console.error(`Stderr during restart: ${stderr}`);
                 }
                 console.log(`App restarted: ${stdout}`);
-                fs.appendFileSync(logFilePath, `${currentDate} - App restarted successfully\n`);
             });
         });
     } else {

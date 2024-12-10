@@ -22,4 +22,4 @@ echo "$CURRENT_DATE - Git reset completed" >> "$LOG_FILE"
 
 sleep 2
 
-echo "Restarting App" >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
