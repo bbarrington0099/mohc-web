@@ -32,6 +32,7 @@ const verifyGitHubSignature = (req, res, next) => {
 router.post("/", verifyGitHubSignature, (req, res) => {
     const branch = req.body.ref;
     const logFilePath = path.resolve(os.homedir(), "mohc-web", "logs", "git.log");
+    const currentDate = new Date().toISOString();
 
     // Check if the pushed branch is "main"
     if (branch === "refs/heads/main") {
