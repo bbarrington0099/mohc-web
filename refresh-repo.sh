@@ -15,9 +15,6 @@ echo "$CURRENT_DATE - Fetching updates from GitHub..." >> "$LOG_FILE"
 git fetch origin main >> "$LOG_FILE" 2>&1
 echo "$CURRENT_DATE - Git fetch completed" >> "$LOG_FILE"
 
-# Sleep to ensure proper Git reset and app stability
-sleep 10
-
 # Perform the reset step
 echo "$CURRENT_DATE - Resetting local branch to match remote..." >> "$LOG_FILE"
 git reset --hard origin/main >> "$LOG_FILE" 2>&1
