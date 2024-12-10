@@ -10,7 +10,11 @@ toggleMobileMenu = () => {
 }
 
 for (let navOption of navOptions) {
-    navOption.addEventListener('click', () => {
+    navOption.addEventListener('click', (event) => {
         toggleMobileMenu();
+        for (let navOption of navOptions) {
+            navOption.classList.remove('selected');
+        }
+        event.target.classList.add('selected');
     })
 }
