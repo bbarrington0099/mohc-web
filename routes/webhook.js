@@ -1,6 +1,8 @@
 const express = require('express');
 const { exec } = require("child_process");
 const crypto = require("crypto");
+const path = require("path");
+const os = require("os");
 const router = express.Router();
 
 // Replace with your GitHub webhook secret
@@ -31,7 +33,8 @@ router.post("/", verifyGitHubSignature, (req, res) => {
 
     // Check if the pushed branch is "main"
     if (branch === "refs/heads/main") {
-        exec("~/mohc-web/refresh-repo.sh", (error, stdout, stderr) => {
+        const scriptPath = path.resolve(os.homedir(), "mohc-web", "refresh-repo.sh");
+        exec(scriptPath, (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error: ${error.message}`);
                 return res.status(500).send("Error executing script");
