@@ -23,7 +23,7 @@ echo "$CURRENT_DATE - Git reset completed" >> "$LOG_FILE"
 sleep 2
 
 echo "Restarting App" >> "$LOG_FILE"
-pm2 gracefulRestart mohc-web
+echo $(pm2 gracefulRestart mohc-web) >> "$LOG_FILE"
 echo "App Restarted" >> "$LOG_FILE"
 
 echo "$CURRENT_DATE - Repo Fresh" >> "$LOG_FILE"
