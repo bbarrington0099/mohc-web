@@ -1,9 +1,13 @@
 const express = require('express');
-const { exec } = require("child_process");
-const crypto = require("crypto");
-const path = require("path");
-const os = require("os");
+const { exec } = require('child_process');
+const crypto = require('crypto');
+const path = require('path');
+const os = require('os');
+const util = require('util');
 const router = express.Router();
+
+// Promisify exec to use async/await
+const execPromise = util.promisify(exec);
 
 // Replace with your GitHub webhook secret
 const GITHUB_SECRET = process.env.GITHUB_SECRET || "";
@@ -28,35 +32,34 @@ const verifyGitHubSignature = (req, res, next) => {
 };
 
 // Webhook route
-router.post("/", verifyGitHubSignature, (req, res) => {
+router.post("/", verifyGitHubSignature, async (req, res) => {
     const branch = req.body.ref;
 
     // Check if the pushed branch is "main"
     if (branch === "refs/heads/main") {
         const scriptPath = path.resolve(os.homedir(), "mohc-web", "refresh-repo.sh");
-        exec(scriptPath, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error: ${error.message}`);
-                return res.status(500).send("Error executing script");
-            }
+
+        try {
+            // Execute the script and wait for it to finish
+            const { stdout, stderr } = await execPromise(scriptPath);
             if (stderr) {
                 console.error(`Stderr: ${stderr}`);
             }
             console.log(`Stdout: ${stdout}`);
+            
+            // Send the response to GitHub after the script execution is done
             res.status(200).send("Update pulled");
 
-            // Now execute pm2 restart in the background (after the response is sent)
-            exec("pm2 restart mohc-web", (error, stdout, stderr) => {
-                if (error) {
-                    console.error(`Error restarting app: ${error.message}`);
-                    return;
-                }
-                if (stderr) {
-                    console.error(`Stderr during restart: ${stderr}`);
-                }
-                console.log(`App restarted: ${stdout}`);
-            });
-        });
+            // After the response is sent, execute pm2 restart
+            const { stdout: pm2Stdout, stderr: pm2Stderr } = await execPromise("pm2 restart mohc-web");
+            if (pm2Stderr) {
+                console.error(`Stderr during restart: ${pm2Stderr}`);
+            }
+            console.log(`App restarted: ${pm2Stdout}`);
+        } catch (error) {
+            console.error(`Error: ${error.message}`);
+            res.status(500).send("Error executing script or restarting app");
+        }
     } else {
         res.status(200).send("Not the main branch, ignoring.");
     }
