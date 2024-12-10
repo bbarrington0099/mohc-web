@@ -22,7 +22,8 @@ git reset --hard origin/main >> "$LOG_FILE" 2>&1
 echo "$CURRENT_DATE - Git reset completed" >> "$LOG_FILE"
 
 echo "Restarting App" >> "$LOG_FILE"
-echo $(pm2 restart mohc-web) >> "$LOG_FILE"
+pm2 restart mohc-web
+echo $(pm2 list)
 echo "App Restarted" >> "$LOG_FILE"
 
 echo "$CURRENT_DATE - Repo Fresh" >> "$LOG_FILE"
