@@ -41,6 +41,7 @@ router.post("/", verifyGitHubSignature, (req, res) => {
             }
             if (stderr) {
                 console.error(`Stderr: ${stderr}`);
+                return res.status(500).send("stderr");
             }
             console.log(`Stdout: ${stdout}`);
             res.status(200).send("Update pulled");
