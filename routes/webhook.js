@@ -5,7 +5,7 @@ const path = require("path");
 const os = require("os");
 const router = express.Router();
 
-/* // Replace with your GitHub webhook secret
+// Replace with your GitHub webhook secret
 const GITHUB_SECRET = process.env.GITHUB_SECRET || "";
 
 // Middleware to verify GitHub signature
@@ -25,10 +25,10 @@ const verifyGitHubSignature = (req, res, next) => {
     }
 
     next();
-}; */
+};
 
 // Webhook route
-router.post("/", (req, res) => {
+router.post("/", verifyGitHubSignature, (req, res) => {
     const branch = req.body.ref;
 
     // Check if the pushed branch is "main"
