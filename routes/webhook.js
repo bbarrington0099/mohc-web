@@ -43,7 +43,7 @@ router.post("/", verifyGitHubSignature, (req, res) => {
                 console.error(`Stderr: ${stderr}`);
             }
             console.log(`Stdout: ${stdout}`);
-            res.status(200).send("Update pulled and app restarted");
+            res.status(200).send("Update pulled");
         });
     } else {
         res.status(200).send("Not the main branch, ignoring.");
