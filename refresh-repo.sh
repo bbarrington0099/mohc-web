@@ -12,7 +12,7 @@ echo "$CURRENT_DATE - Running as user: $(whoami)" >> "$LOG_FILE"
 
 # Write current date and echo statements to log file
 echo "$CURRENT_DATE - Fetching updates from GitHub..." >> "$LOG_FILE"
-git fetch origin main >> "$LOG_FILE" 2>&1
+git fetch origin main -v>> "$LOG_FILE" 2>&1
 echo "$CURRENT_DATE - Git fetch completed" >> "$LOG_FILE"
 
 # Perform the reset step
