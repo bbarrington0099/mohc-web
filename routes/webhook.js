@@ -3,6 +3,7 @@ const { exec } = require("child_process");
 const crypto = require("crypto");
 const path = require("path");
 const os = require("os");
+const fs = require("fs");
 const router = express.Router();
 
 // Replace with your GitHub webhook secret
@@ -30,6 +31,7 @@ const verifyGitHubSignature = (req, res, next) => {
 // Webhook route
 router.post("/", verifyGitHubSignature, (req, res) => {
     const branch = req.body.ref;
+    const logFilePath = path.resolve(os.homedir(), "mohc-web", "logs", "git.log");
 
     // Check if the pushed branch is "main"
     if (branch === "refs/heads/main") {
@@ -44,6 +46,20 @@ router.post("/", verifyGitHubSignature, (req, res) => {
             }
             console.log(`Stdout: ${stdout}`);
             res.status(200).send("Update pulled");
+
+            // Now execute pm2 restart in the background (after response is sent)
+            exec("pm2 restart mohc-web", (error, stdout, stderr) => {
+                if (error) {
+                    console.error(`Error restarting app: ${error.message}`);
+                    fs.appendFileSync(logFilePath, `${currentDate} - Error restarting app: ${error.message}\n`);
+                    return;
+                }
+                if (stderr) {
+                    console.error(`Stderr during restart: ${stderr}`);
+                }
+                console.log(`App restarted: ${stdout}`);
+                fs.appendFileSync(logFilePath, `${currentDate} - App restarted successfully\n`);
+            });
         });
     } else {
         res.status(200).send("Not the main branch, ignoring.");
