@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define log file path
-LOG_FILE="~/mohc-web/logs/git.log"
+LOG_FILE="$HOME/mohc-web/logs/git.log"
 
 # Get current date
 CURRENT_DATE=$(date "+%Y-%m-%d %H:%M:%S")
