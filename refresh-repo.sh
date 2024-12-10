@@ -9,6 +9,7 @@ CURRENT_DATE=$(date "+%Y-%m-%d %H:%M:%S")
 cd ~/mohc-web
 
 echo "$CURRENT_DATE - Running as user: $(whoami)" >> "$LOG_FILE"
+echo $(ssh -T git@github.com)
 
 # Write current date and echo statements to log file
 echo "$CURRENT_DATE - Fetching updates from GitHub..." >> "$LOG_FILE"
