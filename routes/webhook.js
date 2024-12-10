@@ -46,7 +46,7 @@ router.post("/", verifyGitHubSignature, (req, res) => {
             console.log(`Stdout: ${stdout}`);
             res.status(200).send("Update pulled");
 
-            // Now execute pm2 restart in the background (after response is sent)
+            // Now execute pm2 restart in the background (after the response is sent)
             exec("pm2 restart mohc-web", (error, stdout, stderr) => {
                 if (error) {
                     console.error(`Error restarting app: ${error.message}`);
