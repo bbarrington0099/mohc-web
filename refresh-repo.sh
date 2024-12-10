@@ -1,16 +1,20 @@
 #!/bin/bash
 
-# Navigate to the app directory
-cd ~/mohc-web || exit
+# Define log file path
+LOG_FILE="~/mohc-wed/logs/git.log"
 
-# Fetch updates from the remote repo
-echo "Fetching updates from GitHub..."
-git fetch origin main
+# Get current date
+CURRENT_DATE=$(date "+%Y-%m-%d %H:%M:%S")
 
-# Reset the local branch to match the remote
-echo "Resetting local branch to match remote..."
-git reset --hard origin/main
+# Write current date and echo statements to log file
+echo "$CURRENT_DATE - Fetching updates from GitHub..." >> "$LOG_FILE"
+git fetch origin main >> "$LOG_FILE" 2>&1
 
-# Restart the app with pm2
-echo "Restarting app with PM2..."
-pm2 restart mohc-web # Replace 'app-name' with your PM2 app name
+echo "$CURRENT_DATE - Resetting local branch to match remote..." >> "$LOG_FILE"
+git reset --hard origin/main >> "$LOG_FILE" 2>&1
+
+echo "$CURRENT_DATE - Restarting app with PM2..." >> "$LOG_FILE"
+pm2 restart mohc-web >> "$LOG_FILE" 2>&1
+
+echo "$CURRENT_DATE - Script finished" >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"  # Line break
