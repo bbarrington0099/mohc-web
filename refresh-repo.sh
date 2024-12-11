@@ -2,7 +2,7 @@
 
 # Default values
 RESTART_APP=false
-TRIGGER=""
+TRIGGER="Manual"
 
 # Parse flags
 while getopts "rt:" opt; do
