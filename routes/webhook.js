@@ -28,13 +28,14 @@ const verifyGitHubSignature = (req, res, next) => {
 };
 
 // Webhook route
-router.post("/", verifyGitHubSignature, (req, res) => {
+router.post("/gitpush", verifyGitHubSignature, (req, res) => {
     const branch = req.body.ref;
 
     // Check if the pushed branch is "main"
     if (branch === "refs/heads/main") {
         const scriptPath = path.resolve(os.homedir(), "mohc-web", "refresh-repo.sh");
-        exec(scriptPath, (error, stdout, stderr) => {
+        const command = `${scriptPath} -t "Webhook"`;
+        exec(command, (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error: ${error.message}`);
                 return res.status(500).send("Error executing script");
