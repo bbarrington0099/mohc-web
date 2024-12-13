@@ -156,7 +156,7 @@ main {
 }
 
 #page-side #location  {
-    margin-top: auto;
+    margin-bottom: auto;
     padding: 1rem;
     text-align: center;
 }
