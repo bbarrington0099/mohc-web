@@ -7,7 +7,7 @@ const os = require("os");
 const { writeToFile } = require('../appUtils/fileHandeling');
 const router = express.Router();
 
-const APP_PATH = process.env.APP_PATH.replace('$HOME', os.homedir());
+const APP_PATH = (process.env.APP_PATH).replace('$HOME', os.homedir());
 
 const OUTPUT_LOG = path.join(APP_PATH, 'logs', 'output.log');
 const ERROR_LOG = path.join(APP_PATH, 'logs', 'error.log');
