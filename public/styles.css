@@ -232,4 +232,8 @@ main {
     #page-side #announcements-container {
         max-height: 300px;
     }
+
+    footer {
+        margin-bottom: 10vh;
+    }
 }
