@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source .env
+
 # Default values
 RESTART_APP=false
 TRIGGER="Manual"
@@ -21,13 +23,13 @@ while getopts "rt:" opt; do
 done
 
 # Define log file path
-LOG_FILE="$HOME/mohc-web/logs/git.log"
+LOG_FILE="$APP_PATH/logs/git.log"
 
 # Get current date
 CURRENT_DATE=$(date "+%Y-%m-%d %H:%M:%S")
 
 echo "$TRIGGER - Refreshing Repo" >> "$LOG_FILE"
-cd $HOME/mohc-web
+cd "$APP_PATH"
 
 # Write current date and echo statements to log file
 echo "$CURRENT_DATE - Fetching updates from GitHub..." >> "$LOG_FILE"

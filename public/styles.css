@@ -112,7 +112,7 @@ header {
     margin-bottom: .5rem;
 }
 
-.announcements-header {
+.announcements-subheader {
     border-bottom: solid .5px var(--secondary-foreground);
     text-align: center;
     font-weight: bold;
