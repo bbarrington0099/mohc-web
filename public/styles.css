@@ -9,7 +9,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: black;
 }
 
 header {
@@ -101,16 +100,19 @@ main {
     height: 2rem;
     text-transform: uppercase;
     font-weight: bold;
+    color: black;
 }
 
 #page-side nav .nav-option.selected {
     background-color: var(--secondary-foreground);
+    color: var(--primary-background);
 }
 
 
 #page-side nav .nav-option:hover {
     transform: scale(1.1);
-    border-color: var(--secondary-foreground)
+    border-color: var(--secondary-foreground);
+    color: var(--secondary-foreground);
 }
 
 #page-side nav .nav-option.selected:hover {
