@@ -132,7 +132,7 @@ main {
 
 #page-side #announcements-container {
     padding: .5rem 1.5rem 1rem 1.5rem;
-    margin: 0 1rem 1rem;
+    margin: 0 1rem;
     border: solid 1px var(--secondary-foreground);
     border-radius: 1rem;
     max-height: 50%;
@@ -290,15 +290,11 @@ main {
         max-height: 300px;
     }
 
-    #location {
-        margin-bottom: 2vh;
-    }
-
     #page-top #headings-container h1 {
-        justify-content: end;
+        padding-top: 1vh;
     }
 
     #page-top #headings-container h2 {
-        justify-content: start;
+        padding-bottom: 1vh;
     }
 }
