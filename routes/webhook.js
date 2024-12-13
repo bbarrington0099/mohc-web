@@ -34,7 +34,7 @@ router.post("/gitpush", verifyGitHubSignature, (req, res) => {
     // Check if the pushed branch is "main"
     if (branch === "refs/heads/main") {
         const scriptPath = path.resolve(os.homedir(), "mohc-web", "refresh-repo.sh");
-        const command = `${scriptPath} -t "Webhook"`;
+        const command = `${scriptPath} -t "Git Push"`;
         exec(command, (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error: ${error.message}`);
