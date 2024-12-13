@@ -267,10 +267,10 @@ main {
 
     #page-side.opened {
         position: relative;
-        height: 88vh;
         width: 100%;
         display: flex;
         height: calc(100vh - 12vw);
+        max-height: calc(100vh - 12vw);
         z-index: 1001;
     }
 
