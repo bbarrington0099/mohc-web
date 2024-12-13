@@ -1,11 +1,10 @@
-import { writeToFile } from '../appUtils/fileHandeling';
-
 const express = require('express');
 const { exec } = require("child_process");
 const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
+const { writeToFile } = require('../appUtils/fileHandeling');
 const router = express.Router();
 
 const APP_PATH = process.env.APP_PATH.replace('$HOME', os.homedir());
