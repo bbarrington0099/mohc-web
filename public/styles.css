@@ -214,6 +214,7 @@ main {
 
     #page-top {
         min-height: 12vw;
+        max-height: 12vw;
         height: 12vw;
         margin-left: 0;
     }
