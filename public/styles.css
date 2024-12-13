@@ -231,10 +231,6 @@ main {
         width: 80vw;
     }
 
-    #page-top #headings-container h1, h2 {
-        font-size: 1rem;
-    }
-
     #page-top #random-verse {
         display: none;
     }
@@ -292,9 +288,11 @@ main {
 
     #page-top #headings-container h1 {
         padding-top: 1vh;
+        font-size: 1rem;
     }
 
     #page-top #headings-container h2 {
         padding-bottom: 1vh;
+        font-size: .75rem;
     }
 }
