@@ -3,7 +3,6 @@
     --tertiary-background: #696260;
     --secondary-background: #444343;
     --secondary-foreground: #ddb689;
-    --mobile-vh: 1vh;
 }
 
 * {
@@ -56,13 +55,23 @@ main {
 }
 
 #page-top #headings-container {
+    height: 12vh;
     width: 90vw;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
+#page-top #headings-container h1 {
+    height: 4vh;
+}
+
+#page-top #headings-container h2 {
+    height: 3vh;
+}
+
 #page-top #random-verse {
+    height: 5vh;
     background-color: var(--secondary-background);
     color: var(--secondary-foreground);
     width: 90vw;
@@ -152,7 +161,7 @@ main {
     text-align: center;
 }
 
-@media (max-height: 630px) {
+@media (max-width: 1000px), (max-height: 920px) {
     #page-side {
         position: absolute;
         top: 0;
@@ -161,7 +170,7 @@ main {
     }
 
     #page-top {
-        min-height: 75px;
+        min-height: 12vh;
         min-width: calc(100vw - 165.5px);
         margin-left: 165.5px;
     }
@@ -171,11 +180,11 @@ main {
     }
 
     main {
-        top: 75px;
+        top: 12vh;
     }
 }
 
-@media (max-width: 1655px), (max-height: 630px) {
+@media (max-width: 1655px), (max-height: 920px) {
     #page-side {
         min-width: 165.5px;
     }
@@ -193,14 +202,14 @@ main {
     }
 
     body {
-        min-height: calc(var(--mobile-vh) * 100);
+        min-height: 100vh;
     }
 
     main {
         left: 0;
         min-width: 100vw;
         top: 12vw;
-        min-height: calc(calc(var(--mobile-vh) * 100) - 12vw);
+        min-height: calc(100vh - 12vw);
     }
 
     #page-top {
@@ -260,10 +269,10 @@ main {
 
     #page-side.opened {
         position: relative;
-        height: calc(var(--mobile-vh) * 88);
+        height: 88vh;
         width: 100%;
         display: flex;
-        height: calc(calc(var(--mobile-vh) * 100) - 12vw);
+        height: calc(100vh - 12vw);
         z-index: 1001;
     }
 
@@ -282,6 +291,6 @@ main {
     }
 
     #location {
-        padding-bottom: auto;
+        margin-bottom: 10vh;
     }
 }
