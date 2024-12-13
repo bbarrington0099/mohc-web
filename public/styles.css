@@ -291,6 +291,14 @@ main {
     }
 
     #location {
-        margin-bottom: 10vh;
+        margin-bottom: calc(135px + 12vh + 6rem);
+    }
+
+    #page-top #headings-container h1 {
+        justify-content: end;
+    }
+
+    #page-top #headings-container h2 {
+        justify-content: start;
     }
 }
