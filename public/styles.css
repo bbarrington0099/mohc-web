@@ -291,8 +291,7 @@ main {
     }
 
     #location {
-        position: absolute;
-        bottom: calc(100vh - (135px + 12vh + 6rem));
+        margin-bottom: 2vh;
     }
 
     #page-top #headings-container h1 {
