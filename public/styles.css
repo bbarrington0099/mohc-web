@@ -13,6 +13,25 @@
 
 header {
     position: fixed;
+    z-index: 1001;
+}
+
+main {
+    display: flex;
+    position: absolute;
+    left: 12rem;
+    top: 12vh;
+    min-height: 88vh;
+    min-width: calc(100vw - 12rem);
+    z-index: 999;
+}
+
+#mainContent {
+    min-height: 100%;
+    min-width: 100%;
+    background-color: #3e5479;
+    border: none;
+    z-index: 1000;
 }
 
 ::-webkit-scrollbar {
@@ -27,6 +46,7 @@ header {
     height: 12vh;
     width: 100vw;
     background-color: var(--primary-background);
+    z-index: 1002;
 }
 
 #page-top  #corner-cross img {
@@ -61,6 +81,7 @@ header {
     height: 88vh;
     width: 12rem;
     background-color: var(--tertiary-background);
+    z-index: 1002;
 }
 
 #page-side nav {
@@ -97,7 +118,7 @@ header {
 
 #page-side #announcements-container {
     padding: .5rem 1.5rem 1rem 1.5rem;
-    margin: 1rem;
+    margin: 0 1rem 1rem;
     border: solid 1px var(--secondary-foreground);
     border-radius: 1rem;
     max-height: 50%;
@@ -129,6 +150,13 @@ header {
 @media (max-width: 600px) {
     * {
         overflow: scroll;
+    }
+
+    main {
+        left: 0;
+        min-width: 100vw;
+        top: 12vw;
+        min-height: calc(100vh - 12vw);
     }
 
     #page-top {
@@ -168,13 +196,13 @@ header {
         align-items: center;
     }
 
-    #page-top #mobile-menu #mobile-menu-button.opened {
+    #page-top #mobile-menu #mobile-menu-button.closed {
         background-color: var(--secondary-foreground);
         color: var(--primary-background);
         border: 1px solid var(--secondary-background);
     }
 
-    #page-top #mobile-menu #mobile-menu-button.closed {
+    #page-top #mobile-menu #mobile-menu-button.opened {
         background-color: var(--secondary-background);
         color: var(--secondary-foreground);
         border: 1px solid var(--tertiary-background);
@@ -183,6 +211,8 @@ header {
     #page-side.opened {
         width: 100%;
         display: flex;
+        height: calc(100vh - 12vw);
+        z-index: 1001;
     }
 
     #page-side.closed {
@@ -197,10 +227,5 @@ header {
 
     #page-side #announcements-container {
         max-height: 300px;
-    }
-
-    main {
-        padding: 2rem;
-        margin-top: 20vh;
     }
 }
