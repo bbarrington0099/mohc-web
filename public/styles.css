@@ -292,7 +292,7 @@ main {
 
     #location {
         position: absolute;
-        top: calc(135px + 12vh + 6rem);
+        top: calc(135px + 12vh + 8rem);
     }
 
     #page-top #headings-container h1 {
