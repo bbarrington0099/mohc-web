@@ -1,0 +1,18 @@
+@import url(../site-wide.css);
+
+.container {
+    margin: 10vw;
+    padding: 5vw;
+    text-wrap: wrap;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--secondary-background);
+    border: 2.5px solid var(--secondary-foreground);
+    border-radius: 5px;
+    color: var(--secondary-foreground);
+    font-size: 1.5rem;
+}

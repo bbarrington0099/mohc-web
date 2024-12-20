@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-background: #3e5479;
+    --tertiary-background: #696260;
+    --secondary-background: #444343;
+    --secondary-foreground: #ddb689;
+}
+
+::-webkit-scrollbar-track {
+    width: 8px;
+    background-color: var(--primary-background);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-background);
+    border-radius:1vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--tertiary-background);
+}
+
+::-webkit-scrollbar {
+    width:8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+
+@media (max-width: 600px) {
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
