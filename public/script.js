@@ -2,6 +2,8 @@ const mobileMenuButton = document.getElementById('mobile-menu-button');
 const pageSideContainer = document.getElementById('page-side');
 const navOptions = document.getElementsByClassName('nav-option');
 const contentFrame = document.getElementById('mainContent');
+const randomVerseContainer = document.getElementById('random-verse-container');
+const randomVerse = document.getElementById('random-verse');
 
 const initialize = () => {
     contentFrame.src = `./InProgress/index.html`;
@@ -20,6 +22,21 @@ const initialize = () => {
             contentFrame.src = `./${event.target.getAttribute('data-dir')}/index.html`;
         })
     }
+
+    randomVerseContainer.addEventListener("dblclick", () => {
+        randomVerse.style.animation = "none";
+        randomVerse.style.transform = "tranlslateX(100%)";
+        randomVerse.offsetHeight;
+        randomVerse.style.animation = "scrollText 30s linear infinite";
+    });
+    
+    randomVerseContainer.addEventListener("mousedown", () => {
+        randomVerse.style.animationPlayState = "paused";
+    })
+
+    randomVerseContainer.addEventListener("mouseup", () => {
+        randomVerse.style.animationPlayState = "running";
+    })
 }
 
 toggleMobileMenu = () => {
