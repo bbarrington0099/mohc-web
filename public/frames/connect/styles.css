@@ -1,0 +1,19 @@
+@import url(../../site-wide.css);
+
+.contact-panel-container {
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 85%;
+    max-height: 200px;
+    min-height: 50px;
+}
+
+.textImagePanel {
+    display: flex;
+    flex-direction: row;
+}
+
+.platformInformation {
+    display: flex;
+    flex-direction: column;
+}
