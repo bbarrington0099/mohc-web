@@ -4,14 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pm2 start server.js --name mohc-web && pm2 save",
+    "restart": "pm2 restart mohc-web",
+    "teardown": "pm2 delete mohc-web && pm2 save",
+    "rebuild": "npm run teardown && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "all": "^0.0.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mysql2": "^3.11.5"
+    "mohc-web": "file:",
+    "mysql2": "^3.11.5",
+    "pm2": "^6.0.5"
   }
 }
